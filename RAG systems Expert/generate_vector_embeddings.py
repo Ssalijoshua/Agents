@@ -5,10 +5,10 @@ from langchain_community.vectorstores import FAISS
 
 # Load documents
 # Non PDFs
-# loader = DirectoryLoader('docs/', glob="**/*.txt", loader_cls=TextLoader)  # Or PyPDFLoader for PDFs
+# loader = DirectoryLoader('docs/', glob="**/*.txt", loader_cls=TextLoader)  
 
 # For PDF files
-loader = PyPDFLoader('docs/', glob="**/*.txt", loader_cls=TextLoader)  # Or PyPDFLoader for PDFs
+loader = DirectoryLoader('doc_rsc/', glob="**/*.pdf", loader_cls=PyPDFLoader)  
 docs = loader.load()
 
 # Split into chunks
@@ -20,4 +20,4 @@ embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-
 
 # Create vector store
 vector_store = FAISS.from_documents(split_docs, embeddings)
-vector_store.save_local("faiss_index")  # Save for reuse
+vector_store.save_local("faiss_index") 

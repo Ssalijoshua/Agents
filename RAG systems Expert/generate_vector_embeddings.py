@@ -7,7 +7,8 @@ from langchain_community.vectorstores import FAISS
 # Non PDFs
 # loader = DirectoryLoader('docs/', glob="**/*.txt", loader_cls=TextLoader)  # Or PyPDFLoader for PDFs
 
-loader = DirectoryLoader('docs/', glob="**/*.txt", loader_cls=TextLoader)  # Or PyPDFLoader for PDFs
+# For PDF files
+loader = PyPDFLoader('docs/', glob="**/*.txt", loader_cls=TextLoader)  # Or PyPDFLoader for PDFs
 docs = loader.load()
 
 # Split into chunks

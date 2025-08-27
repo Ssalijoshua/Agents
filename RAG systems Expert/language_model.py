@@ -48,9 +48,6 @@ def ask_question(rag_chain, question):
 
 # Main execution
 if __name__ == "__main__":
-    # Ingest documents if not already done
-    if not os.path.exists("faiss_index"):
-        ingest_documents()
 
     # Set up RAG chain
     rag_chain = setup_rag_chain()

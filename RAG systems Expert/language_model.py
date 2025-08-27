@@ -10,7 +10,12 @@ from dotenv import load_dotenv
 import requests
 import os
 
-# Step 2: Set Up Groq LLM and Prompt
+load_dotenv()
+
+# Accessing the variables
+
+
+
 def setup_rag_chain():
     # Load saved vector store
     embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")

@@ -10,24 +10,6 @@ from dotenv import load_dotenv
 import requests
 import os
 
-# Step 1: Ingest Documents into Vector Store
-def ingest_documents():
-    # Load text files from docs/ directory
-    loader = DirectoryLoader('docs/', glob="**/*.txt", loader_cls=TextLoader)
-    docs = loader.load()
-
-    # Split into chunks
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
-    split_docs = text_splitter.split_documents(docs)
-
-    # Embeddings model
-    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
-
-    # Create and save vector store
-    vector_store = FAISS.from_documents(split_docs, embeddings)
-    vector_store.save_local("faiss_index")
-    return vector_store
-
 # Step 2: Set Up Groq LLM and Prompt
 def setup_rag_chain():
     # Load saved vector store

@@ -1,4 +1,4 @@
-# GitHub Repository Assessment
+# Project 1 - Ready Tensor Publication Explorer
 
 ## Overview
 

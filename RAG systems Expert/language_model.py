@@ -34,15 +34,15 @@ def setup_rag_chain():
         temperature=0.7
     )
     prompt_template = PromptTemplate.from_template(
-        "Answer the question based on the following context:\n{context}\n\nQuestion: {question}\nAnswer:"
-    )
+        "Answer the question based on the following context:\n{context}\n\nQuestion: {input}\nAnswer:"
+    )  # Changed {question} to {input}
     stuff_chain = create_stuff_documents_chain(llm, prompt_template)
-    rag_chain = create_retrieval_chain(retriever, stuff_chain)  # Removed input_key
+    rag_chain = create_retrieval_chain(retriever, stuff_chain)
     return rag_chain
 
 # Step 3: CLI for Interaction
 def ask_question(rag_chain, question):
-    response = rag_chain.invoke({"input": question})  # Changed to "input"
+    response = rag_chain.invoke({"input": question})  # Keep "input"
     print("Answer:", response["answer"])
     print("\nRetrieved Contexts:")
     for doc in response["context"]:

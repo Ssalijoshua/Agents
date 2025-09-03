@@ -1,4 +1,4 @@
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_groq import ChatGroq
 from langchain_core.prompts import PromptTemplate
@@ -40,7 +40,7 @@ def setup_rag_chain():
 
 # Step 3: CLI for Interaction
 def ask_question(rag_chain, question):
-    response = rag_chain.invoke({"input": question})
+    response = rag_chain.invoke({"question": question})
     print("Answer:", response["answer"])
     print("\nRetrieved Contexts:")
     for doc in response["context"]:
